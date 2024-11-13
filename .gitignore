@@ -23,7 +23,7 @@
 data/*
 
 # you can make exceptions for specific files
-!data/dragon_taxonomy.csv
+
 
 #figures & output (excludes all figure files)
 *.png
