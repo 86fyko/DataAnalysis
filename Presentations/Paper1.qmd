@@ -1,0 +1,66 @@
+---
+title: "Paper1: Linkages between vegetation properties, soil temperatures and active layer depth across seasons"
+author: "Merle Scheiner"
+format: pptx
+editor: visual
+---
+
+## Introduction
+
+-   Climate change on Svalbard dramatic
+
+-   Permafrost has huge potential to release greenhouse gases
+
+-   Plants interact with permafrost
+
+-   (Bryophytes known to be better insulators than vasc. Plants?)
+
+## Knowledge gap
+
+Limited understanding of processes in the uppermost layer affecting frozen ground
+
+## Objectives
+
+-   Explore relationships between deeper permafrost temperatures and surface properties of vegetation and soil by monitoring surface information in selected borehole-network sites
+
+-   Identify (a)biotic traits that correlate with superficial and deeper soil temperature profiles and thaw depth, distinguishing between
+
+    -   above- and belowground components
+    -   vascular plant, bryophyte, lichen
+
+## Research Question
+
+1.  How do processes in the uppermost layer of permafrost impact the frozen ground underneath?
+2.  What are the relationships between deeper permafrost temperatures and surface properties of vegetation and soil?
+3.  How do species-specific differences in insulation capacity and soil moisture influence active layer thickness (ALT)?
+4.  What are the localized impacts of plant-species and associated soil conditions on permafrost stability?
+5.  How do seasonal changes in vegetation dominance affect active layer thickness (ALT)?
+
+## Hypotheses
+
+i.  The temperature of deeper permafrost layers integrates the overall effects of the plant community.
+ii. ALT is influenced by local factors such as species-specific differences in insulation capacity and soil moisture.
+iii. Increased vegetation cover, plant height, bryophyte thickness and litter, and organic layer depth decrease (deeper) permafrost temperatures.
+iv. factors determining insulation change during the growing season.
+    i.  Bryophytes have the same influence throughout the growing season
+    ii. Grasses insulates more towards the end of the season
+
+More specific:
+
+i.  Higher and denser (more hits per point) vegetation has a higher insulative capacity than shorter and looser vegetation.
+ii. Litter and standing dead are excellent insulators.
+
+```{r}
+library(tidyverse)
+dummy_data <- tibble(
+  Vegetation_Parameter = rep(c("Vegetation_Cover", "Plant_Height", "Bryophyte_Thickness", "Litter_Depth", "Organic_Layer_Depth"), each = 5),
+  Value = c(20, 40, 60, 80, 100, 5, 10, 15, 20, 25, 1, 2, 3, 4, 5, 0.5, 1.0, 1.5, 2.0, 2.5, 10, 20, 30, 40, 50),
+  Permafrost_Temperature = rep(c(0:4), times = 5)
+)
+
+ggplot(dummy_data, aes(y= Permafrost_Temperature, x=Value, color=Vegetation_Parameter))+
+  geom_point()+
+  geom_smooth(method="lm")+
+  theme_bw()
+
+```
